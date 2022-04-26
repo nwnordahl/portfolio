@@ -1,0 +1,75 @@
+/* Basic styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  height: 200px;
+  border-radius: 50%;
+  align-self: center;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Profile card */
+#profile-card {
+  text-align: center;
+  border-bottom-left-radius: 50%;
+}
+
+#profile-card:hover {
+  transform: translateY(-15px);
+}
+
+/* Project card */
+#project-card {
+  justify-content: center;
+}
+
+/* General classes */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  padding: 10px 25px;
+  background-color: whitesmoke;
+}
+
+.card h1 {
+  text-align: center;
+}
+
+.card p {
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.button {
+  padding: 5px 15px;
+  color: white;
+  font-weight: bold;
+  background-color: black;
+  border-radius: 8px;
+}
