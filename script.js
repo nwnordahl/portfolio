@@ -1,9 +1,14 @@
-const url = "https://api.github.com/users/nwnordahl";
+// Global variables
+const profileUrl = "https://api.github.com/users/nwnordahl";
+const reposUrl = "https://api.github.com/users/nwnordahl/repos?per_page=100";
+
+// Query selectors
 const profileCard = document.querySelector("#profile-card");
 const container = document.querySelector(".container");
 
+// Helper functions
 async function getProfileInformation() {
-  const response = await fetch(url);
+  const response = await fetch(profileUrl);
   return await response.json();
 
   profileCard.innerHTML = `
@@ -13,12 +18,27 @@ async function getProfileInformation() {
 }
 
 async function getRepos() {
-  const response = await fetch(
-    "https://api.github.com/users/nwnordahl/repos?per_page=100"
-  );
+  const response = await fetch(reposUrl);
   return await response.json();
 }
 
+function sortByMostRecentDate(dateArray) {
+  const sortedDateArray = dateArray.sort((a, b) => {
+    return new Date(b.pushed_at) - new Date(a.pushed_at);
+  });
+  return sortedDateArray;
+}
+
+function formatProjectTitle(title) {
+  return title
+    .split("-")
+    .map((word) => {
+      return word[0].toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+}
+
+// Fetch information
 getProfileInformation().then((profileInformation) => {
   profileCard.innerHTML = `
   <h1>${profileInformation.name}</h1>
@@ -26,15 +46,18 @@ getProfileInformation().then((profileInformation) => {
   <img src="${profileInformation.avatar_url}" />`;
 });
 
-getRepos().then((repos) => {
-  for (let i = 0; i < repos.length; i++) {
-    const { name, description, homepage, html_url, fork } = repos[i];
+getRepos()
+  .then((repos) => sortByMostRecentDate(repos))
+  .then((repos) => {
+    for (let i = 0; i < repos.length; i++) {
+      const { name, description, homepage, html_url, fork } = repos[i];
+      const formattedTitle = formatProjectTitle(name);
 
-    if (homepage && !fork) {
-      console.log(repos[i]);
-      container.innerHTML += `
+      if (homepage && !fork) {
+        console.log(repos[i]);
+        container.innerHTML += `
     <div id="project-card" class="card">
-      <h1>${name}</h1>
+      <h1>${formattedTitle}</h1>
       <img src="#" />
       <p>${description}</p>
       <div class="buttons">
@@ -46,6 +69,6 @@ getRepos().then((repos) => {
         </a>
       </div>
     </div>`;
+      }
     }
-  }
-});
+  });
