@@ -2,6 +2,8 @@
 
 A collection of the things I have built
 
+<img src="./img/screenshot.png">
+
 # Idéer
 
 - Legge bio som en snakkeboble på profilbilde
