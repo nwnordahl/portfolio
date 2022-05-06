@@ -38,6 +38,12 @@ function formatProjectTitle(title) {
     .join(" ");
 }
 
+function isImageFound(imageUrl) {
+  return fetch(imageUrl)
+    .then((response) => true)
+    .catch((error) => false);
+}
+
 // Fetch information
 getProfileInformation().then((profileInformation) => {
   profileCard.innerHTML = `
@@ -52,16 +58,17 @@ getRepos()
     for (let i = 0; i < repos.length; i++) {
       const { name, description, homepage, html_url, fork } = repos[i];
       const formattedTitle = formatProjectTitle(name);
+      const imageUrl = `https://raw.githubusercontent.com/nwnordahl/${name}/main/img/screenshot.png`;
 
       if (homepage && !fork) {
         console.log(repos[i]);
         container.innerHTML += `
     <div id="project-card" class="card">
       <h1>${formattedTitle}</h1>
-      <img src="#" />
-      <p>${description}</p>
+      <img src="${imageUrl}" />
+      <p>${description || ""}</p>
       <div class="buttons">
-        <a class="button" href="${homepage}" target="_blank">
+        <a class="button margin-auto" href="${homepage}" target="_blank">
           Se app
         </a>
         <a class="button" href="${html_url}" target="_blank">

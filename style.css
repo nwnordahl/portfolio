@@ -10,9 +10,10 @@ a {
 }
 
 img {
-  height: 200px;
+  width: 250px;
   border-radius: 3px;
   align-self: center;
+  box-shadow: 0 0.05em 0.25em 0 rgb(0 0 0 / 50%);
 }
 
 body {
@@ -35,6 +36,29 @@ body {
 /* Project card */
 #project-card {
   justify-content: center;
+}
+
+#project-card h1 {
+  margin-bottom: 10px;
+}
+
+#project-card img {
+  box-shadow: 0 0.05em 0.25em 0 rgb(0 0 0 / 50%);
+  margin-bottom: 10px;
+}
+
+#project-card p {
+  font-size: 20px;
+  max-width: 250px;
+  align-self: center;
+}
+
+#project-card .buttons {
+  display: flex;
+}
+
+#project-card .button.margin-auto {
+  margin-left: auto;
 }
 
 /* General classes */
@@ -70,10 +94,14 @@ body {
 }
 
 .button {
-  padding: 5px 15px;
+  padding: 8px 20px;
   color: white;
   font-weight: bold;
   background-color: #6abfc3;
   border-radius: 8px;
   box-shadow: 0 0.05em 0.25em 0 rgb(0 0 0 / 50%);
+}
+
+.button:hover {
+  opacity: 0.7;
 }
