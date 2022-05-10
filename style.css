@@ -7,31 +7,56 @@
 
 a {
   text-decoration: none;
+  color: #141414;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+ul {
+  list-style-type: none;
 }
 
 img {
-  width: 250px;
-  border-radius: 3px;
+  width: 275px;
+  /* border-radius: 3px; */
   align-self: center;
-  box-shadow: 0 0.05em 0.25em 0 rgb(0 0 0 / 50%);
 }
 
 body {
   background-color: whitesmoke;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-family: "Fira Code", monospace;
+  color: #141414;
 }
 
 /* Profile card */
 #profile-card {
   display: flex;
-  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
 }
 
-#profile-card:hover {
-  transform: translateY(-15px);
+.test {
+  /* flex-basis: 50%; */
+}
+
+#profile-card h1 {
+  font-size: 65px;
+  text-align: center;
+}
+
+#profile-card .last-name {
+  background-color: #141414;
+  color: whitesmoke;
+  padding: 0 8px;
+}
+
+#profile-card .profile-content {
+  display: flex;
+  color: pink;
 }
 
 /* Project card */

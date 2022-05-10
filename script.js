@@ -13,8 +13,10 @@ async function getProfileInformation() {
 
   profileCard.innerHTML = `
   <h1>${result.name}</h1>
-  <p>${result.bio}</p>
-  <img src="${result.avatar_url}" />`;
+  <div class="profile-content">
+    <img src="${result.avatar_url}" />
+  </div>
+  `;
 }
 
 async function getRepos() {
@@ -47,9 +49,12 @@ function isImageFound(imageUrl) {
 // Fetch information
 getProfileInformation().then((profileInformation) => {
   profileCard.innerHTML = `
-  <h1>${profileInformation.name}</h1>
-  <p>${profileInformation.bio}</p>
-  <img src="${profileInformation.avatar_url}" />`;
+  <div>
+    <img src="${profileInformation.avatar_url}" />
+    <h1>${profileInformation.name.split(" ")[0]}</h1>
+  </div>
+  <h1 class="last-name">${profileInformation.name.split(" ")[1]}</h1>
+  `;
 });
 
 getRepos()
